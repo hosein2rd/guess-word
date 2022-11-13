@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     const randomQuestion = ["book", "javascript", "reactjs"]
 
-    answer.current = randomQuestion[getRandomInt(0, 2)]
+    answer.current = randomQuestion[getRandomInt(0, randomQuestion.length)]
 
     setIsMatched(false)
   }, [isMatched])
