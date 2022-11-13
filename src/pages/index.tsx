@@ -16,8 +16,6 @@ export default function Home() {
     const randomQuestion = ["book", "javascript", "reactjs"]
 
     answer.current = randomQuestion[getRandomInt(0, randomQuestion.length)]
-
-    setIsMatched(false)
   }, [isMatched])
 
   const reset = () => setData([])
@@ -29,7 +27,9 @@ export default function Home() {
 
     if (matchingInfo.isFullMatch) {
       setIsMatched(true)
-      alert(`Congratulations! The answer is ${answer.current}`)
+      alert(
+        `Congratulations! The answer is ${answer.current}. For new guess refresh the page.`,
+      )
       reset()
       return
     }
@@ -48,7 +48,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 className="text-4xl">Guess The Word!</h1>
-      <Form<FormDataType> onSubmit={onSubmit} />
+      <Form<FormDataType> onSubmit={onSubmit} disabled={isMatched} />
       <Table<Guess>
         headers={[
           { title: "Guess", align: "left" },

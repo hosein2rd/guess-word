@@ -2,9 +2,12 @@ import { ChangeEvent, useState } from "react"
 import Button from "./Button"
 import Input from "./Input"
 
-type FormProps<T> = { onSubmit: (data: T) => void }
+type FormProps<T> = { onSubmit: (data: T) => void; disabled?: boolean }
 
-export default function Form<T extends {}>({ onSubmit }: FormProps<T>) {
+export default function Form<T extends {}>({
+  onSubmit,
+  disabled,
+}: FormProps<T>) {
   const [formData, setFormData] = useState<T | any>(null)
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,12 +24,15 @@ export default function Form<T extends {}>({ onSubmit }: FormProps<T>) {
       className="py-4"
     >
       <Input
+        disabled={disabled}
         value={formData?.guess || ""}
         name="guess"
         onChange={handleInput}
         className="mr-4"
       />
-      <Button type="submit">submit</Button>
+      <Button disabled={disabled} type="submit">
+        submit
+      </Button>
     </form>
   )
 }
