@@ -21,12 +21,10 @@ export default function Table<T = { [key: string]: any }>({
           </tr>
           {data?.map((d, index) => (
             <tr key={index}>
-              {typeof d === "object"
-                ? d &&
-                  Object.keys(d).map((key, i) => (
-                    <Row key={i} content={(d as any)[key]} />
-                  )) // FIXME: fix (d as any)[key]
-                : `${d}`}
+              {d &&
+                Object.keys(d).map((key, i) => (
+                  <Row key={i} content={(d as any)[key]} />
+                ))}
             </tr>
           ))}
         </tbody>
