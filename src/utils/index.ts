@@ -13,8 +13,6 @@ export const checkMatching = (
     if (valueChars[index] === wordChars[index]) count += 1
   }
 
-  console.log(count, wordChars.length)
-
   return { count, isFullMatch: value === word }
 }
 
